@@ -90,7 +90,7 @@ dependencies {
 
 	implementation project.ext.springbootweb
 	runtimeOnly project.ext.springdevtools
-	
+	runtimeOnly 'com.h2database:h2'
 	implementation project.ext.springbootundertow
 	implementation project.ext.flyway
 
