@@ -34,7 +34,7 @@ public class ManejadorHealthCheckBloques {
 			salud.verificar();
 			this.listadoErroresBloques = new ArrayList<>();
 		} catch (RuntimeException e) {
-			LOGGER_ERROR.error(MENSAJE_ERROR_EN_BLOQUE + key);
+			LOGGER_ERROR.error("{}",MENSAJE_ERROR_EN_BLOQUE + key);
 			this.listadoErroresBloques = new ArrayList<>();
 			this.listadoErroresBloques.add(new ErrorHealthCheck(key));
 		}
