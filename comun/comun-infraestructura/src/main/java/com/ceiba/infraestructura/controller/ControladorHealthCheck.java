@@ -24,9 +24,9 @@ public class ControladorHealthCheck {
 	public ResponseEntity<Object>  healthCheck() {
 		if (this.manejadorHealthCheckBloques.existenErrores()) {
 			List<ErrorHealthCheck> listaErrorHealthCheck = this.manejadorHealthCheckBloques.getListadoErroresBloques();//a�adir
-			return new ResponseEntity<Object>(listaErrorHealthCheck, HttpStatus.SERVICE_UNAVAILABLE);
+			return new ResponseEntity<>(listaErrorHealthCheck, HttpStatus.SERVICE_UNAVAILABLE);
 		} else {
-			return new ResponseEntity<Object>(true,HttpStatus.OK );
+			return new ResponseEntity<>(true,HttpStatus.OK );
 		}
 	}
 }
