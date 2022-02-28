@@ -4,6 +4,8 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +28,9 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 
     @SqlStatement(namespace="usuario", value="existePorId")
     private static String sqlExistePorId;
+
+    @SqlStatement(namespace="usuario", value="existePorUsuarioClave")
+    private static String sqlExistePorUsuarioYClave;
 
     public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -63,5 +68,20 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         paramSource.addValue("id", id);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public Long idPorUsuarioClave(String nombre, String clave) throws EmptyResultDataAccessException {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("nombre", nombre);
+        paramSource.addValue("clave", clave);
+
+        try {
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorUsuarioYClave,paramSource, Long.class);
+        }catch (EmptyResultDataAccessException er){
+            return 0L;
+        }catch(IncorrectResultSizeDataAccessException aout){
+            return -1L;
+        }
     }
 }
