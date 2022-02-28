@@ -35,4 +35,10 @@ public interface RepositorioUsuario {
      */
     boolean existePorId(Long id);
 
+    /**
+     * Permite validar si existe un usuario con un nombre y clave
+     * @return id existente
+     */
+    Long idPorUsuarioClave(String nombre, String clave);
+
 }

@@ -12,7 +12,7 @@ public class UsuarioTestDataBuilder {
     private LocalDateTime fecha;
 
     public UsuarioTestDataBuilder() {
-        nombreUsuario = "1234";
+        nombreUsuario = "test";
         clave = "1234";
         fecha = LocalDateTime.now();
     }

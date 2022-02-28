@@ -35,4 +35,13 @@ public class Usuario {
         this.fechaCreacion = fechaCreacion;
     }
 
+    public Usuario(String nombre, String clave) {
+        validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
+        validarObligatorio(clave, SE_DEBE_INGRESAR_LA_CLAVE);
+        validarLongitud(clave, LONGITUD_MINIMA_CLAVE, String.format(LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A,LONGITUD_MINIMA_CLAVE));
+
+        this.nombre = nombre;
+        this.clave = clave;
+    }
+
 }

@@ -1,0 +1,1 @@
+select id from usuario where nombre = :nombre and clave = :clave

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class ServicioEliminarUsuarioTest {
+public final class ServicioEliminarUsuarioTest {
 
     @Test
     @DisplayName("Deberia eliminar el usuario llamando al repositorio")
@@ -13,9 +13,9 @@ public class ServicioEliminarUsuarioTest {
         RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
         ServicioEliminarUsuario servicioEliminarUsuario = new ServicioEliminarUsuario(repositorioUsuario);
 
-        servicioEliminarUsuario.ejecutar(1l);
+        servicioEliminarUsuario.ejecutar(1L);
 
-        Mockito.verify(repositorioUsuario, Mockito.times(1)).eliminar(1l);
+        Mockito.verify(repositorioUsuario, Mockito.times(1)).eliminar(1L);
 
     }
 
