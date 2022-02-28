@@ -1,10 +1,12 @@
 package com.ceiba.usuario.controlador;
 
 import com.ceiba.ComandoRespuesta;
+import com.ceiba.usuario.comando.ComandoIngreso;
 import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorActualizarUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorCrearUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorEliminarUsuario;
+import com.ceiba.usuario.comando.manejador.ManejadorIngresarUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,14 +21,17 @@ public class ComandoControladorUsuario {
     private final ManejadorCrearUsuario manejadorCrearUsuario;
 	private final ManejadorEliminarUsuario manejadorEliminarUsuario;
 	private final ManejadorActualizarUsuario manejadorActualizarUsuario;
+	private final ManejadorIngresarUsuario manejadorIngresarUsuario;
 
     @Autowired
     public ComandoControladorUsuario(ManejadorCrearUsuario manejadorCrearUsuario,
 									 ManejadorEliminarUsuario manejadorEliminarUsuario,
-									 ManejadorActualizarUsuario manejadorActualizarUsuario) {
+									 ManejadorActualizarUsuario manejadorActualizarUsuario,
+									 ManejadorIngresarUsuario manejadorIngresarUsuario) {
         this.manejadorCrearUsuario = manejadorCrearUsuario;
 		this.manejadorEliminarUsuario = manejadorEliminarUsuario;
 		this.manejadorActualizarUsuario = manejadorActualizarUsuario;
+		this.manejadorIngresarUsuario = manejadorIngresarUsuario;
     }
 
     @PostMapping
@@ -47,4 +52,11 @@ public class ComandoControladorUsuario {
 		comandoUsuario.setId(id);
 		manejadorActualizarUsuario.ejecutar(comandoUsuario);
 	}
+
+	@PostMapping(value = "/login")
+	@ApiOperation("Obtener id Usuario")
+	public ComandoRespuesta<Long> ingresar(@RequestBody ComandoIngreso comandoIngreso) {
+		return manejadorIngresarUsuario.ejecutar(comandoIngreso);
+	}
+
 }
