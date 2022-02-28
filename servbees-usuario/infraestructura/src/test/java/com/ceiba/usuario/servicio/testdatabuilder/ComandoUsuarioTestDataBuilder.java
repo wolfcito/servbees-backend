@@ -13,7 +13,7 @@ public class ComandoUsuarioTestDataBuilder {
     private LocalDateTime fecha;
 
     public ComandoUsuarioTestDataBuilder() {
-        nombre = UUID.randomUUID().toString();
+        nombre = "test";//UUID.randomUUID().toString();
         clave = "1234";
         fecha = LocalDateTime.now();
     }

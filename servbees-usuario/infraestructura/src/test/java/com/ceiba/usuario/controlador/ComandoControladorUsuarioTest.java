@@ -74,4 +74,19 @@ class ComandoControladorUsuarioTest {
                 .andExpect(jsonPath("$", hasSize(0)));
     }
 
+    @Test
+    @DisplayName("Deberia validar clave del usuario y devolver id")
+    void deberiaValidarLoginUsuario() throws Exception {
+        // arrange
+        Long id = 1L;
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
+        // act - assert
+        mocMvc.perform(post("/usuarios/login",usuario)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(usuario)))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'valor': 1}"));
+
+    }
+
 }
