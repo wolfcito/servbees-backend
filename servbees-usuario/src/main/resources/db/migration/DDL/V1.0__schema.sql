@@ -8,6 +8,6 @@ create table usuario (
 
 -- DATA TEST
 --insert into usuario(id, nombre,clave,fecha_creacion) values(1,'test','1234',now());
---insert into usuario(id, nombre,clave,fecha_creacion) values(2,'test','1234',now());
---insert into usuario(id, nombre,clave,fecha_creacion) values(3,'test2','1234',now());
+insert into usuario(id, nombre,clave,fecha_creacion) values(2,'test','1234',now());
+insert into usuario(id, nombre,clave,fecha_creacion) values(3,'test2','1234',now());
 --insert into usuario(id, nombre,clave,fecha_creacion) values(4,'test','1234',now());
