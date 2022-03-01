@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UsuarioTest {
+public final class UsuarioTest {
 
     @Test
     @DisplayName("Deberia crear correctamente el usuario")
@@ -23,7 +23,7 @@ public class UsuarioTest {
         Usuario usuario = new UsuarioTestDataBuilder().conFechaCreacion(fechaCreacion).conId(1L).build();
         //assert
         assertEquals(1, usuario.getId());
-        assertEquals("1234", usuario.getNombre());
+        assertEquals("test", usuario.getNombre());
         assertEquals("1234", usuario.getClave());
         assertEquals(fechaCreacion, usuario.getFechaCreacion());
     }

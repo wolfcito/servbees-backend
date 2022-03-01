@@ -35,7 +35,7 @@ class ComandoControladorUsuarioTest {
     @DisplayName("Deberia crear un usuario")
     void deberiaCrearUnUsuario() throws Exception{
         // arrange
-        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().build();
+        ComandoUsuario usuario = new ComandoUsuarioTestDataBuilder().conNombre("test2").build();
         // act - assert
         mocMvc.perform(post("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
