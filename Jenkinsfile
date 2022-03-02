@@ -1,3 +1,4 @@
+@Library('ceiba-jenkins-library') _
 pipeline {
   //Donde se va a ejecutar el Pipeline
   agent {
@@ -43,17 +44,17 @@ pipeline {
     }
 
     stage('Static Code Analysis') {
-      steps{
-        echo '------------>Análisis de código estático<------------'
-        withSonarQubeEnv('Sonar') {
-sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
-        }
+       steps{
+        	sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:servbees-backend-luis.ushina', 
+          sonarName:'Ceiba-ADN(luis.ushina)', 
+          sonarPathProperties:'./sonar-project.properties')
       }
     }
 
     stage('Build') {
       steps {
         echo "------------>Build<------------"
+        sh './servbees-usuario/gradlew --b ./servbees-usuario/build.gradle build -x test'
       }
     }  
   }
