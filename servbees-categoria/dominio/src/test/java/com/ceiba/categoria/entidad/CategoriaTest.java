@@ -31,7 +31,8 @@ public final class CategoriaTest {
     }
 
     @Test
-    void deberiaFallarExcedeLongitudDeNombreDeCategoria() {
+    @DisplayName("Deberia fallar si excede la longitud de NOMBRE de la categoria")
+    void deberiaFallarSiExcedeLongitudDeNombreDeCategoria() {
 
         final int LONGITUD_MAXIMA = 100;
         String nombreInvalida = Generadores.palabra(LONGITUD_MAXIMA+1);
@@ -43,7 +44,8 @@ public final class CategoriaTest {
     }
 
     @Test
-    void deberiaFallarExcedeLongitudDeCodigoDeCategoria() {
+    @DisplayName("Deberia fallar si excede la longitud de CODIGO de la categoria")
+    void deberiaFallarSiExcedeLongitudDeCodigoDeCategoria() {
 
         final int LONGITUD_MAXIMA = 5;
         String nombreInvalida = Generadores.palabra(LONGITUD_MAXIMA+1);
@@ -55,6 +57,7 @@ public final class CategoriaTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar si no se tiene NOMBRE de categoria")
     void deberiaFallarSinNombreDeCategoria() {
 
         //Arrange
@@ -67,7 +70,8 @@ public final class CategoriaTest {
     }
 
     @Test
-    void deberiaFallarSinCcodigo() {
+    @DisplayName("Deberia fallar si no se tiene CODIGO de categoria")
+    void deberiaFallarSinCcodigoDeCategoria() {
 
         //Arrange
         CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conCodigo(null).conId(1L);
@@ -79,6 +83,7 @@ public final class CategoriaTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar COSTO POR HORA negativo")
     void deberiaFallarCostoPorHoraNegativo() {
 
         //Arrange
@@ -91,6 +96,7 @@ public final class CategoriaTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar COSTO POR DIA negativo")
     void deberiaFallarCostoPorDiaNegativo() {
 
         //Arrange
@@ -103,6 +109,7 @@ public final class CategoriaTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar COSTO POR SEMANA negativo")
     void deberiaFallarCostoPorSemanaNegativo() {
 
         //Arrange
@@ -113,8 +120,5 @@ public final class CategoriaTest {
                 },
                 ExcepcionValorInvalido.class, "Se debe ingresar un número mayor que cero");
     }
-
-
-
 
 }
