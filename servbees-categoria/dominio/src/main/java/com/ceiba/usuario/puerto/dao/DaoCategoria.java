@@ -1,14 +1,14 @@
 package com.ceiba.usuario.puerto.dao;
 
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
+import com.ceiba.usuario.modelo.dto.DtoCategoria;
 
 import java.util.List;
 
-public interface DaoUsuario {
+public interface DaoCategoria {
 
     /**
-     * Permite listar usuarios
-     * @return los usuarios
+     * Permite listar categorias
+     * @return los categorias
      */
-    List<DtoUsuario> listar();
+    List<DtoCategoria> listar();
 }

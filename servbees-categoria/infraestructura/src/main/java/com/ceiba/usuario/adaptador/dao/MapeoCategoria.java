@@ -1,24 +1,25 @@
 package com.ceiba.usuario.adaptador.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
-
 import com.ceiba.infraestructura.jdbc.MapperResult;
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
+import com.ceiba.usuario.modelo.dto.DtoCategoria;
 import org.springframework.jdbc.core.RowMapper;
 
-public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class MapeoCategoria implements RowMapper<DtoCategoria>, MapperResult {
 
     @Override
-    public DtoUsuario mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    public DtoCategoria mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
         Long id = resultSet.getLong("id");
         String nombre = resultSet.getString("nombre");
-        String clave = resultSet.getString("clave");
-        LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
+        String codigo = resultSet.getString("codigo");
+        Double costoHora = resultSet.getDouble("costo_hora");
+        Double costoDia = resultSet.getDouble("costo_dia");
+        Double costoSemana = resultSet.getDouble("costo_semana");
 
-        return new DtoUsuario(id,nombre,clave,fecha);
+        return new DtoCategoria(id,nombre,codigo, costoHora, costoDia, costoSemana);
     }
 
 }

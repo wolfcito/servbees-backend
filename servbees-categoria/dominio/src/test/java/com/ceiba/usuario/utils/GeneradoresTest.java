@@ -1,19 +1,22 @@
 package com.ceiba.usuario.utils;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import java.util.Random;
 
-public class Generadores {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public static String palabra(){
-        Random r = new Random();
+final class GeneradoresTest {
 
-        String resultado = "";
-        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        for (int i = 0; i < 50; i++) {
-            resultado = String.valueOf(alphabet.charAt(r.nextInt(alphabet.length())));
-        }
+    @Test
+    @DisplayName("Deberia generar una palabra de longitud esperada")
+    void deberiaGenerarPalabraLongitudEsperada(){
 
-        return resultado;
+        final int LONGITUD_ESPERADA = new Random().nextInt(100);
+
+        String generadorPalabra = Generadores.palabra(LONGITUD_ESPERADA);
+        assertEquals(LONGITUD_ESPERADA, generadorPalabra.length());
     }
 
 }

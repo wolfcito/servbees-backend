@@ -1,1 +1,1 @@
-insert into usuario (nombre, clave,fecha_creacion) values (:nombre, :clave, :fechaCreacion)
+insert into categoria(nombre, codigo,costo_hora,costo_dia,costo_semana) values(:nombre, :codigo, :costoHora, :costoDia, :costoSemana);

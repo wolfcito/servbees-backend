@@ -1,38 +1,26 @@
 package com.ceiba.usuario.puerto.repositorio;
 
-import com.ceiba.usuario.modelo.entidad.Usuario;
+import com.ceiba.usuario.modelo.entidad.Categoria;
 
-public interface RepositorioUsuario {
+public interface RepositorioCategoria {
     /**
-     * Permite crear un usuario
-     * @param usuario
+     * Permite crear un categoria
+     * @param categoria
      * @return el id generado
      */
-    Long crear(Usuario usuario);
+    Long crear(Categoria categoria);
 
     /**
-     * Permite actualizar un usuario
-     * @param usuario
-     */
-    void actualizar(Usuario usuario);
-
-    /**
-     * Permite eliminar un usuario
+     * Permite eliminar un categoria
      * @param id
      */
     void eliminar(Long id);
 
     /**
      * Permite validar si existe un usuario con un nombre
-     * @param nombre
+     * @param codigo
      * @return si existe o no
      */
-    boolean existe(String nombre);
-
-    /**
-     * Permite validar si existe un usuario con un nombre excluyendo un id
-     * @return si existe o no
-     */
-    boolean existePorId(Long id);
+    boolean existe(String codigo);
 
 }

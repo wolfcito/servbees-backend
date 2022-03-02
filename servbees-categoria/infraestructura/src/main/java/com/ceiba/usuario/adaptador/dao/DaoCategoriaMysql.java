@@ -1,29 +1,27 @@
 package com.ceiba.usuario.adaptador.dao;
 
-import java.util.List;
-
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.usuario.puerto.dao.DaoUsuario;
-
+import com.ceiba.usuario.modelo.dto.DtoCategoria;
+import com.ceiba.usuario.puerto.dao.DaoCategoria;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
+import java.util.List;
 
 @Component
-public class DaoUsuarioMysql implements DaoUsuario {
+public class DaoCategoriaMysql implements DaoCategoria {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="usuario", value="listar")
+    @SqlStatement(namespace="categoria", value="listar")
     private static String sqlListar;
 
-    public DaoUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public DaoCategoriaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public List<DtoUsuario> listar() {
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoUsuario());
+    public List<DtoCategoria> listar() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoCategoria());
     }
 }

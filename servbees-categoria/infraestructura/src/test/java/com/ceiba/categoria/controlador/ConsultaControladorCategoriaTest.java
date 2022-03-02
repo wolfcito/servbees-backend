@@ -1,6 +1,7 @@
-package com.ceiba.usuario.controlador;
+package com.ceiba.categoria.controlador;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.usuario.controlador.ConsultaControladorCategoria;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,24 +20,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(ConsultaControladorUsuario.class)
+@WebMvcTest(ConsultaControladorCategoria.class)
 @ContextConfiguration(classes= ApplicationMock.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class ConsultaControladorUsuarioTest {
+class ConsultaControladorCategoriaTest {
 
     @Autowired
     private MockMvc mocMvc;
 
     @Test
-    @DisplayName("Deberia listar usuarios")
-    void deberiaListarUsuarios() throws Exception {
+    @DisplayName("Deberia listar categorias")
+    void deberiaListarCategorias() throws Exception {
         // arrange
         // act - assert
-        mocMvc.perform(get("/usuarios")
+        mocMvc.perform(get("/categorias")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].nombre", is("test")))
+                .andExpect(jsonPath("$[0].nombre", is("Categoria test")))
+                .andExpect(jsonPath("$[0].codigo", is("CAT")))
                 .andExpect(jsonPath("$[0].id", is(1)));
 
     }

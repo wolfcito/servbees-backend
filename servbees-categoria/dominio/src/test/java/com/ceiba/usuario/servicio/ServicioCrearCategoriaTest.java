@@ -2,52 +2,85 @@ package com.ceiba.usuario.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
-import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
+import com.ceiba.usuario.modelo.entidad.Categoria;
+import com.ceiba.usuario.puerto.repositorio.RepositorioCategoria;
+import com.ceiba.usuario.servicio.testdatabuilder.CategoriaTestDataBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ServicioCrearUsuarioTest {
+public final class ServicioCrearCategoriaTest {
 
     @Test
-    @DisplayName("Deberia lanzar una exepecion cuando la longitud de la clave sea menor a 4")
-    void deberiaLanzarUnaExepcionCuandoLaLongitudDeLaClaveSeaMenorACuatro() {
-        // arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conClave("124");
-        // act - assert
-        BasePrueba.assertThrows(usuarioTestDataBuilder::build, ExcepcionLongitudValor.class, "La clave debe tener una longitud mayor o igual a 4");
+    @DisplayName("Deberia fallar si el costo por dia es menor que el costo por hora")
+    void deberiaFallarSiCostoPorDiaMenorQueCostoPorHora() {
+
+        //Arrange
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder()
+                .conCostoDia(10.0).conCostoHora(20.0).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    categoriaTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "El valor del COSTO POR DIA no debe ser menor que el valor del COSTO POR HORA");
     }
 
     @Test
-    @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del Usuario")
-    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelUsuario() {
-        // arrange
-        Usuario usuario = new UsuarioTestDataBuilder().build();
-        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-        Mockito.when(repositorioUsuario.existe(Mockito.anyString())).thenReturn(true);
-        ServicioCrearUsuario servicioCrearUsuario = new ServicioCrearUsuario(repositorioUsuario);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionDuplicidad.class,"El usuario ya existe en el sistema");
+    @DisplayName("Deberia fallar si el costo por semana es menor que el costo por hora")
+    void deberiaFallarSiCostoPorSemanaMenorQueCostoPorHora() {
+
+        //Arrange
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder()
+                .conCostoSemana(10.0).conCostoHora(20.0).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    categoriaTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "El valor del COSTO POR SEMANA no debe ser menor que el valor del COSTO POR HORA");
     }
 
     @Test
-    @DisplayName("Deberia Crear el usuario de manera correcta")
-    void deberiaCrearElUsuarioDeManeraCorrecta() {
+    @DisplayName("Deberia fallar si el costo por semana es menor que el costo por dia")
+    void deberiaFallarSiCostoPorSemanaMenorQueCostoPorDia() {
+
+        //Arrange
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder()
+                .conCostoSemana(10.0).conCostoDia(20.0).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    categoriaTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "El valor del COSTO POR SEMANA no debe ser menor que el valor del COSTO POR DIA");
+    }
+
+    @Test
+    @DisplayName("Deberia lanzar una excepcion cuando se valide la existencia de una categoria por su codigo")
+    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDeCategoriaPorCodigo() {
         // arrange
-        Usuario usuario = new UsuarioTestDataBuilder().build();
-        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-        Mockito.when(repositorioUsuario.existe(Mockito.anyString())).thenReturn(false);
-        Mockito.when(repositorioUsuario.crear(usuario)).thenReturn(10L);
-        ServicioCrearUsuario servicioCrearUsuario = new ServicioCrearUsuario(repositorioUsuario);
+        Categoria categoria = new CategoriaTestDataBuilder().build();
+        RepositorioCategoria repositorioCategoria = Mockito.mock(RepositorioCategoria.class);
+        Mockito.when(repositorioCategoria.existe(Mockito.anyString())).thenReturn(true);
+        ServicioCrearCategoria servicioCrearCategoria = new ServicioCrearCategoria(repositorioCategoria);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearCategoria.ejecutar(categoria), ExcepcionDuplicidad.class,"El codigo de la categoria ya existe en el sistema");
+    }
+
+    @Test
+    @DisplayName("Deberia crear una categoria de manera correcta")
+    void deberiaCrearUnaCategoriaDeManeraCorrecta() {
+        // arrange
+        Categoria categoria = new CategoriaTestDataBuilder().build();
+        RepositorioCategoria repositorioCategoria = Mockito.mock(RepositorioCategoria.class);
+        Mockito.when(repositorioCategoria.existe(Mockito.anyString())).thenReturn(false);
+        Mockito.when(repositorioCategoria.crear(categoria)).thenReturn(7L);
+        ServicioCrearCategoria servicioCrearUsuario = new ServicioCrearCategoria(repositorioCategoria);
         // act
-        Long idUsuario = servicioCrearUsuario.ejecutar(usuario);
+        Long idUsuario = servicioCrearUsuario.ejecutar(categoria);
         //- assert
-        assertEquals(10L,idUsuario);
-        Mockito.verify(repositorioUsuario, Mockito.times(1)).crear(usuario);
+        assertEquals(7L,idUsuario);
+        Mockito.verify(repositorioCategoria, Mockito.times(1)).crear(categoria);
     }
 }

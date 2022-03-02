@@ -2,26 +2,25 @@ package com.ceiba.usuario.comando.manejador;
 
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.manejador.ManejadorComandoRespuesta;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-import com.ceiba.usuario.servicio.ServicioCrearUsuario;
+import com.ceiba.usuario.comando.ComandoCategoria;
+import com.ceiba.usuario.comando.fabrica.FabricaCategoria;
+import com.ceiba.usuario.modelo.entidad.Categoria;
+import com.ceiba.usuario.servicio.ServicioCrearCategoria;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.comando.fabrica.FabricaUsuario;
-
 @Component
-public class ManejadorCrearUsuario implements ManejadorComandoRespuesta<ComandoUsuario, ComandoRespuesta<Long>> {
+public class ManejadorCrearCategoria implements ManejadorComandoRespuesta<ComandoCategoria, ComandoRespuesta<Long>> {
 
-    private final FabricaUsuario fabricaUsuario;
-    private final ServicioCrearUsuario servicioCrearUsuario;
+    private final FabricaCategoria fabricaCategoria;
+    private final ServicioCrearCategoria servicioCrearCategoria;
 
-    public ManejadorCrearUsuario(FabricaUsuario fabricaUsuario, ServicioCrearUsuario servicioCrearUsuario) {
-        this.fabricaUsuario = fabricaUsuario;
-        this.servicioCrearUsuario = servicioCrearUsuario;
+    public ManejadorCrearCategoria(FabricaCategoria fabricaCategoria, ServicioCrearCategoria servicioCrearCategoria) {
+        this.fabricaCategoria = fabricaCategoria;
+        this.servicioCrearCategoria = servicioCrearCategoria;
     }
 
-    public ComandoRespuesta<Long> ejecutar(ComandoUsuario comandoUsuario) {
-        Usuario usuario = this.fabricaUsuario.crear(comandoUsuario);
-        return new ComandoRespuesta<>(this.servicioCrearUsuario.ejecutar(usuario));
+    public ComandoRespuesta<Long> ejecutar(ComandoCategoria comandoCategoria) {
+        Categoria categoria = this.fabricaCategoria.crear(comandoCategoria);
+        return new ComandoRespuesta<>(this.servicioCrearCategoria.ejecutar(categoria));
     }
 }

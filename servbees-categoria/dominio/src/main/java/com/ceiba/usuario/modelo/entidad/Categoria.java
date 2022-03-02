@@ -3,36 +3,52 @@ package com.ceiba.usuario.modelo.entidad;
 
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
-import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
-import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
+import static com.ceiba.dominio.ValidadorArgumento.*;
 
 @Getter
-public class Usuario {
+public class Categoria {
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
-    private static final String LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La clave debe tener una longitud mayor o igual a %s";
-    private static final String SE_DEBE_INGRESAR_LA_CLAVE = "Se debe ingresar la clave";
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
+    private static final String SE_DEBE_INGRESAR_EL_CODIGO = "Se debe ingresar el codigo";
+    private static final String SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO = "Se debe ingresar un número mayor que cero";
+    private static final String EL_VALOR_NO_DEBE_SER_MENOR_QUE = "El valor del %s no debe ser menor que el valor del %s";
 
-    private static final int LONGITUD_MINIMA_CLAVE = 4;
+    private static final String NOMBRE = "NOMBRE";
+    private static final String CODIGO = "CODIGO";
+    private static final String COSTO_POR_HORA = "COSTO POR HORA";
+    private static final String COSTO_POR_DIA = "COSTO POR DIA";
+    private static final String COSTO_POR_SEMANA = "COSTO POR SEMANA";
+    private static final String LONGITUD_MAXIMA_EXCEDIDA_PARA = "Longitud maxima excedida para %s es de %s caracteres";
+
+    private static final int LONGITUD_MAX_NOMBRE = 100;
+    private static final int LONGITUD_MAX_CODIGO = 5;
 
     private Long id;
     private String nombre;
-    private String clave;
-    private LocalDateTime fechaCreacion;
+    private String codigo;
+    private Double costoHora;
+    private Double costoDia;
+    private Double costoSemana;
 
-    public Usuario(Long id,String nombre, String clave,LocalDateTime fechaCreacion) {
+    public Categoria(Long id, String nombre, String codigo, Double costoHora, Double costoDia,Double costoSemana) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
-        validarObligatorio(clave, SE_DEBE_INGRESAR_LA_CLAVE);
-        validarLongitud(clave, LONGITUD_MINIMA_CLAVE, String.format(LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A,LONGITUD_MINIMA_CLAVE));
-        validarObligatorio(fechaCreacion, SE_DEBE_INGRESAR_LA_FECHA_CREACION);
+        validarLongitudMaxima(nombre, LONGITUD_MAX_NOMBRE, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, NOMBRE, LONGITUD_MAX_NOMBRE));
+        validarObligatorio(codigo, SE_DEBE_INGRESAR_EL_CODIGO);
+        validarLongitudMaxima(codigo, LONGITUD_MAX_CODIGO, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, CODIGO, LONGITUD_MAX_CODIGO));
+        validarPositivo(costoHora, SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO);
+        validarPositivo(costoDia, SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO);
+        validarPositivo(costoSemana, SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO);
+        validarMenor(costoHora.longValue(), costoDia.longValue(), String.format(EL_VALOR_NO_DEBE_SER_MENOR_QUE, COSTO_POR_DIA, COSTO_POR_HORA));
+        validarMenor(costoHora.longValue(), costoSemana.longValue(), String.format(EL_VALOR_NO_DEBE_SER_MENOR_QUE, COSTO_POR_SEMANA, COSTO_POR_HORA));
+        validarMenor(costoDia.longValue(), costoSemana.longValue(), String.format(EL_VALOR_NO_DEBE_SER_MENOR_QUE, COSTO_POR_SEMANA, COSTO_POR_DIA));
 
         this.id = id;
         this.nombre = nombre;
-        this.clave = clave;
-        this.fechaCreacion = fechaCreacion;
+        this.codigo = codigo;
+        this.costoHora = costoHora;
+        this.costoDia = costoDia;
+        this.costoSemana = costoSemana;
+
     }
 
 }

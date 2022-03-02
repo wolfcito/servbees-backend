@@ -2,79 +2,119 @@ package com.ceiba.usuario.entidad;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
+import com.ceiba.usuario.modelo.entidad.Categoria;
+import com.ceiba.usuario.servicio.testdatabuilder.CategoriaTestDataBuilder;
+import com.ceiba.usuario.utils.Generadores;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public final class UsuarioTest {
+public final class CategoriaTest {
 
     @Test
-    @DisplayName("Deberia crear correctamente el usuario")
-    void deberiaCrearCorrectamenteElUsusuario() {
+    @DisplayName("Deberia crear correctamente una categoria")
+    void deberiaCrearCorrectamenteUnaCategoria() {
         // arrange
-        LocalDateTime fechaCreacion = LocalDateTime.now();
         //act
-        Usuario usuario = new UsuarioTestDataBuilder().conFechaCreacion(fechaCreacion).conId(1L).build();
+        Categoria categoria = new CategoriaTestDataBuilder().conId(1L).build();
         //assert
-        assertEquals(1, usuario.getId());
-        assertEquals("1234", usuario.getNombre());
-        assertEquals("1234", usuario.getClave());
-        assertEquals(fechaCreacion, usuario.getFechaCreacion());
+        assertEquals(1, categoria.getId());
+        assertEquals("Categoria", categoria.getNombre());
+        assertEquals("CAT", categoria.getCodigo());
+        assertEquals(10, categoria.getCostoHora());
+        assertEquals(20, categoria.getCostoDia());
+        assertEquals(30, categoria.getCostoSemana());
+
     }
 
     @Test
-    void deberiaFallarSinNombreDeUsuario() {
+    void deberiaFallarExcedeLongitudDeNombreDeCategoria() {
+
+        final int LONGITUD_MAXIMA = 100;
+        String nombreInvalida = Generadores.palabra(LONGITUD_MAXIMA+1);
+        //Arrange
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conNombre(nombreInvalida).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(categoriaTestDataBuilder::build,
+                ExcepcionLongitudValor.class, String.format("Longitud maxima excedida para NOMBRE es de %s caracteres", LONGITUD_MAXIMA));
+    }
+
+    @Test
+    void deberiaFallarExcedeLongitudDeCodigoDeCategoria() {
+
+        final int LONGITUD_MAXIMA = 5;
+        String nombreInvalida = Generadores.palabra(LONGITUD_MAXIMA+1);
+        //Arrange
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conCodigo(nombreInvalida).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(categoriaTestDataBuilder::build,
+                ExcepcionLongitudValor.class, String.format("Longitud maxima excedida para CODIGO es de %s caracteres", LONGITUD_MAXIMA));
+    }
+
+    @Test
+    void deberiaFallarSinNombreDeCategoria() {
 
         //Arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conNombre(null).conId(1L);
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conNombre(null).conId(1L);
         //act-assert
         BasePrueba.assertThrows(() -> {
-                    usuarioTestDataBuilder.build();
+                    categoriaTestDataBuilder.build();
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar el nombre de usuario");
     }
 
     @Test
-    void deberiaFallarSinClave() {
+    void deberiaFallarSinCcodigo() {
 
         //Arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conClave(null).conId(1L);
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conCodigo(null).conId(1L);
         //act-assert
         BasePrueba.assertThrows(() -> {
-                    usuarioTestDataBuilder.build();
+                    categoriaTestDataBuilder.build();
                 },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la clave");
+                ExcepcionValorObligatorio.class, "Se debe ingresar el codigo");
     }
 
     @Test
-    void deberiaFallarSinTamanioClave() {
+    void deberiaFallarCostoPorHoraNegativo() {
 
         //Arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conClave("123").conId(1L);
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conCostoHora(-1.0).conId(1L);
         //act-assert
         BasePrueba.assertThrows(() -> {
-                    usuarioTestDataBuilder.build();
+                    categoriaTestDataBuilder.build();
                 },
-                ExcepcionLongitudValor.class, "La clave debe tener una longitud mayor o igual a 4");
+                ExcepcionValorInvalido.class, "Se debe ingresar un número mayor que cero");
     }
 
     @Test
-    void deberiaFallarSinFechaCreacion() {
+    void deberiaFallarCostoPorDiaNegativo() {
 
         //Arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conFechaCreacion(null).conId(1L);
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conCostoDia(-1.0).conId(1L);
         //act-assert
         BasePrueba.assertThrows(() -> {
-                    usuarioTestDataBuilder.build();
+                    categoriaTestDataBuilder.build();
                 },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la fecha de creación");
+                ExcepcionValorInvalido.class, "Se debe ingresar un número mayor que cero");
     }
+
+    @Test
+    void deberiaFallarCostoPorSemanaNegativo() {
+
+        //Arrange
+        CategoriaTestDataBuilder categoriaTestDataBuilder = new CategoriaTestDataBuilder().conCostoSemana(-1.0).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    categoriaTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "Se debe ingresar un número mayor que cero");
+    }
+
+
 
 
 }

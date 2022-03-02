@@ -1,29 +1,28 @@
 package com.ceiba.usuario.servicio;
 
-import com.ceiba.usuario.modelo.entidad.Usuario;
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.usuario.modelo.entidad.Categoria;
+import com.ceiba.usuario.puerto.repositorio.RepositorioCategoria;
 
+public class ServicioCrearCategoria {
 
-public class ServicioCrearUsuario {
+    private static final String CATEGORIA_EXISTENTE = "El codigo de la categoria ya existe en el sistema";
 
-    private static final String EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA = "El usuario ya existe en el sistema";
+    private final RepositorioCategoria repositorioCategoria;
 
-    private final RepositorioUsuario repositorioUsuario;
-
-    public ServicioCrearUsuario(RepositorioUsuario repositorioUsuario) {
-        this.repositorioUsuario = repositorioUsuario;
+    public ServicioCrearCategoria(RepositorioCategoria repositorioCategoria) {
+        this.repositorioCategoria = repositorioCategoria;
     }
 
-    public Long ejecutar(Usuario usuario) {
-        validarExistenciaPrevia(usuario);
-        return this.repositorioUsuario.crear(usuario);
+    public Long ejecutar(Categoria categoria) {
+        validarExistenciaPrevia(categoria);
+        return this.repositorioCategoria.crear(categoria);
     }
 
-    private void validarExistenciaPrevia(Usuario usuario) {
-        boolean existe = this.repositorioUsuario.existe(usuario.getNombre());
+    private void validarExistenciaPrevia(Categoria categoria) {
+        boolean existe = this.repositorioCategoria.existe(categoria.getCodigo());
         if(existe) {
-            throw new ExcepcionDuplicidad(EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionDuplicidad(CATEGORIA_EXISTENTE);
         }
     }
 }

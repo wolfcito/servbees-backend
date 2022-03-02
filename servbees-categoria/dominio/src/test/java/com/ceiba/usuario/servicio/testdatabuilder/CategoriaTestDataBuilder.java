@@ -1,43 +1,55 @@
 package com.ceiba.usuario.servicio.testdatabuilder;
 
-import com.ceiba.usuario.modelo.entidad.Usuario;
+import com.ceiba.usuario.modelo.entidad.Categoria;
 
-import java.time.LocalDateTime;
-
-public class UsuarioTestDataBuilder {
+public class CategoriaTestDataBuilder {
 
     private Long id;
-    private String nombreUsuario;
-    private String clave;
-    private LocalDateTime fecha;
+    private String nombre;
+    private String codigo;
+    private Double costoHora;
+    private Double costoDia;
+    private Double costoSemana;
 
-    public UsuarioTestDataBuilder() {
-        nombreUsuario = "1234";
-        clave = "1234";
-        fecha = LocalDateTime.now();
+    public CategoriaTestDataBuilder() {
+        this.nombre = "Categoria";
+        this.codigo = "CAT";
+        this.costoHora = 10.0;
+        this.costoDia = 20.0;
+        this.costoSemana = 30.0;
     }
 
-    public UsuarioTestDataBuilder conClave(String clave) {
-        this.clave = clave;
-        return this;
-    }
-
-    public UsuarioTestDataBuilder conId(Long id) {
+    public CategoriaTestDataBuilder conId(Long id) {
         this.id = id;
         return this;
     }
 
-    public UsuarioTestDataBuilder conFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fecha = fechaCreacion;
+    public CategoriaTestDataBuilder conNombre(String nombre) {
+        this.nombre = nombre;
         return this;
     }
 
-    public UsuarioTestDataBuilder conNombre(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public CategoriaTestDataBuilder conCodigo(String codigo) {
+        this.codigo = codigo;
         return this;
     }
 
-    public Usuario build() {
-        return new Usuario(id,nombreUsuario, clave,fecha);
+    public CategoriaTestDataBuilder conCostoHora(Double costoHora) {
+        this.costoHora = costoHora;
+        return this;
+    }
+
+    public CategoriaTestDataBuilder conCostoDia(Double costoDia) {
+        this.costoDia = costoDia;
+        return this;
+    }
+
+    public CategoriaTestDataBuilder conCostoSemana(Double costoSemana) {
+        this.costoSemana = costoSemana;
+        return this;
+    }
+
+    public Categoria build() {
+        return new Categoria(id, nombre, codigo, costoHora, costoDia, costoSemana);
     }
 }

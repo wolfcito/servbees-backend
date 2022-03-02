@@ -3,14 +3,15 @@ package com.ceiba.usuario.modelo.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @AllArgsConstructor
-public class DtoUsuario {
+public class DtoCategoria {
+
     private Long id;
     private String nombre;
-    private String clave;
-    private LocalDateTime fechaCreacion;
+    private String codigo;
+    private Double costoHora;
+    private Double costoDia;
+    private Double costoSemana;
 
 }

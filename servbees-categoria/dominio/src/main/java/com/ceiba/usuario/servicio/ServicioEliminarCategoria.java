@@ -1,16 +1,16 @@
 package com.ceiba.usuario.servicio;
 
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
+import com.ceiba.usuario.puerto.repositorio.RepositorioCategoria;
 
-public class ServicioEliminarUsuario {
+public class ServicioEliminarCategoria {
 
-    private final RepositorioUsuario repositorioUsuario;
+    private final RepositorioCategoria repositorioCategoria;
 
-    public ServicioEliminarUsuario(RepositorioUsuario repositorioUsuario) {
-        this.repositorioUsuario = repositorioUsuario;
+    public ServicioEliminarCategoria(RepositorioCategoria repositorioCategoria) {
+        this.repositorioCategoria = repositorioCategoria;
     }
 
     public void ejecutar(Long id) {
-        this.repositorioUsuario.eliminar(id);
+        this.repositorioCategoria.eliminar(id);
     }
 }

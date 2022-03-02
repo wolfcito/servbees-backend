@@ -1,3 +1,1 @@
-delete 
-from usuario
-where id = :id
+delete from categoria where id = :id
