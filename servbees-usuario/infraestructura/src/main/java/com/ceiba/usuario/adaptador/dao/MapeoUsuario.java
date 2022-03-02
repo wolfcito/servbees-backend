@@ -17,8 +17,9 @@ public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
         String nombre = resultSet.getString("nombre");
         String clave = resultSet.getString("clave");
         LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
+        Integer mesesExperiencia = resultSet.getInt("meses_experiencia");
 
-        return new DtoUsuario(id,nombre,clave,fecha);
+        return new DtoUsuario(id,nombre,clave,fecha, mesesExperiencia);
     }
 
 }

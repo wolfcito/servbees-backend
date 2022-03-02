@@ -10,11 +10,13 @@ public class UsuarioTestDataBuilder {
     private String nombreUsuario;
     private String clave;
     private LocalDateTime fecha;
+    private Integer mesesExperiencia;
 
     public UsuarioTestDataBuilder() {
         nombreUsuario = "test";
         clave = "1234";
         fecha = LocalDateTime.now();
+        mesesExperiencia = 0;
     }
 
     public UsuarioTestDataBuilder conClave(String clave) {
@@ -37,7 +39,12 @@ public class UsuarioTestDataBuilder {
         return this;
     }
 
+    public UsuarioTestDataBuilder conExperiencia(Integer mesesExperiencia) {
+        this.mesesExperiencia = mesesExperiencia;
+        return this;
+    }
+
     public Usuario build() {
-        return new Usuario(id,nombreUsuario, clave,fecha);
+        return new Usuario(id,nombreUsuario, clave,fecha, mesesExperiencia);
     }
 }

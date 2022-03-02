@@ -3,6 +3,7 @@ create table usuario (
  nombre varchar(100) not null unique,
  clave varchar(45) not null,
  fecha_creacion datetime null,
+ meses_experiencia int not null,
  primary key (id)
 );
 

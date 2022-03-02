@@ -2,6 +2,7 @@ package com.ceiba.usuario.entidad;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
@@ -76,5 +77,17 @@ public final class UsuarioTest {
                 ExcepcionValorObligatorio.class, "Se debe ingresar la fecha de creación");
     }
 
+    @Test
+    @DisplayName("Deberia fallar experiencia negativo")
+    void deberiaFallarExperienciaNegativo() {
+
+        //Arrange
+        UsuarioTestDataBuilder categoriaTestDataBuilder = new UsuarioTestDataBuilder().conExperiencia(-1).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    categoriaTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "Se debe ingresar un número mayor o igual que cero");
+    }
 
 }
