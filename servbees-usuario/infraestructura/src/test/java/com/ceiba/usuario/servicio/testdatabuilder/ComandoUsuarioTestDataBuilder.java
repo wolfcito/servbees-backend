@@ -3,7 +3,6 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 import com.ceiba.usuario.comando.ComandoUsuario;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class ComandoUsuarioTestDataBuilder {
 
@@ -11,11 +10,13 @@ public class ComandoUsuarioTestDataBuilder {
     private String nombre;
     private String clave;
     private LocalDateTime fecha;
+    private Integer mesesExperiencia;
 
     public ComandoUsuarioTestDataBuilder() {
         nombre = "test";//UUID.randomUUID().toString();
         clave = "1234";
         fecha = LocalDateTime.now();
+        mesesExperiencia = 0;
     }
 
     public ComandoUsuarioTestDataBuilder conNombre(String nombre) {
@@ -24,6 +25,6 @@ public class ComandoUsuarioTestDataBuilder {
     }
 
     public ComandoUsuario build() {
-        return new ComandoUsuario(id,nombre, clave,fecha);
+        return new ComandoUsuario(id,nombre, clave,fecha, mesesExperiencia);
     }
 }
