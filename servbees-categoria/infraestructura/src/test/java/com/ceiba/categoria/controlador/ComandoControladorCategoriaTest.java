@@ -2,8 +2,7 @@ package com.ceiba.categoria.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.categoria.servicio.testdatabuilder.ComandoCategoriaTestDataBuilder;
-import com.ceiba.usuario.comando.ComandoCategoria;
-import com.ceiba.usuario.controlador.ComandoControladorCategoria;
+import com.ceiba.categoria.comando.ComandoCategoria;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

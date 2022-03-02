@@ -1,6 +1,6 @@
 package com.ceiba.categoria.servicio.testdatabuilder;
 
-import com.ceiba.usuario.comando.ComandoCategoria;
+import com.ceiba.categoria.comando.ComandoCategoria;
 
 import java.util.UUID;
 

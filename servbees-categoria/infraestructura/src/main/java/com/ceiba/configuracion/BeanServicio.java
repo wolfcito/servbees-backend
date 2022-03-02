@@ -1,7 +1,7 @@
 package com.ceiba.configuracion;
 
-import com.ceiba.usuario.puerto.repositorio.RepositorioCategoria;
-import com.ceiba.usuario.servicio.*;
+import com.ceiba.categoria.puerto.repositorio.RepositorioCategoria;
+import com.ceiba.categoria.servicio.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
