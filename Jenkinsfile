@@ -51,12 +51,12 @@ pipeline {
         }
       }
 
-       steps{
-        	sonarqubeMasQualityGatesP(
-            sonarKey:'co.com.ceiba.adn:servbees.backend-luis.ushina', 
-            sonarName:'Ceiba-ADN(luis.ushina)', 
-            sonarPathProperties:'./sonar-project.properties')
-      }
+      //  steps{
+      //   	sonarqubeMasQualityGatesP(
+      //       sonarKey:'co.com.ceiba.adn:servbees.backend-luis.ushina', 
+      //       sonarName:'Ceiba-ADN(luis.ushina)', 
+      //       sonarPathProperties:'./sonar-project.properties')
+      // }
       
     }
 
