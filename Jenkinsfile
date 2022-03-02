@@ -44,19 +44,12 @@ pipeline {
     }
 
     stage('Static Code Analysis') {
-      steps{
-        echo '------------>Análisis de código estático<------------'
-        withSonarQubeEnv('Sonar') {
-          sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
-        }
+       steps{
+        	sonarqubeMasQualityGatesP(
+            sonarKey:'co.com.ceiba.adn:servbees.backend-luis.ushina', 
+            sonarName:'''"Ceiba-ADN(luis.ushina)"''', 
+            sonarPathProperties:'./sonar-project.properties')
       }
-
-      //  steps{
-      //   	sonarqubeMasQualityGatesP(
-      //       sonarKey:'co.com.ceiba.adn:servbees.backend-luis.ushina', 
-      //       sonarName:'Ceiba-ADN(luis.ushina)', 
-      //       sonarPathProperties:'./sonar-project.properties')
-      // }
       
     }
 
