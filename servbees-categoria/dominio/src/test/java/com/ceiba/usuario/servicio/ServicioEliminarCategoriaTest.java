@@ -1,6 +1,5 @@
 package com.ceiba.usuario.servicio;
 
-import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
