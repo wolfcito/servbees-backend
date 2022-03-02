@@ -38,6 +38,7 @@ pipeline {
         echo "------------>Compile & Unit Tests<------------"
         sh 'chmod +x ./servbees-usuario/gradlew'
         sh './servbees-usuario/gradlew --b ./servbees-usuario/build.gradle clean'
+        sh './servbees-usuario/gradlew --b ./servbees-usuario/build.gradle test'
       }
     }
 
