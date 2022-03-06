@@ -1,0 +1,1 @@
+insert into categoria(nombre, codigo,costo_hora,costo_dia,costo_semana) values(:nombre, :codigo, :costoHora, :costoDia, :costoSemana);
