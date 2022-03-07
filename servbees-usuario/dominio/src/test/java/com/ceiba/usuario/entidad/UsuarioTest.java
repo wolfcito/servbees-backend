@@ -30,6 +30,7 @@ public final class UsuarioTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar si nombre del usuario nulo")
     void deberiaFallarSinNombreDeUsuario() {
 
         //Arrange
@@ -42,6 +43,7 @@ public final class UsuarioTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar si clave del usuario nulo")
     void deberiaFallarSinClave() {
 
         //Arrange
@@ -54,6 +56,7 @@ public final class UsuarioTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar si tamaño de la clave es menor que X")
     void deberiaFallarSinTamanioClave() {
 
         //Arrange
@@ -66,6 +69,7 @@ public final class UsuarioTest {
     }
 
     @Test
+    @DisplayName("Deberia fallar si fecha de creacion es nulo")
     void deberiaFallarSinFechaCreacion() {
 
         //Arrange
