@@ -89,4 +89,15 @@ class ComandoControladorUsuarioTest {
 
     }
 
+    @Test
+    @DisplayName("Deberia validar la experiencia del usuario")
+    void deberiaValidarExperienciaUsuario() throws Exception {
+        // arrange
+        Long id = 1L;
+        // act - assert
+        mocMvc.perform(get("/usuarios/{id}/experiencia",id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'valor': false}"));
+    }
 }

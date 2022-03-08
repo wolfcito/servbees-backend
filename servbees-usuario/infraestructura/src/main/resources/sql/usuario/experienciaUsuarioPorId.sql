@@ -1,0 +1,1 @@
+select count(1) from usuario where id = :id and meses_experiencia >= 12;

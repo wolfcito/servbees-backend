@@ -32,6 +32,9 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     @SqlStatement(namespace="usuario", value="existePorUsuarioClave")
     private static String sqlExistePorUsuarioYClave;
 
+    @SqlStatement(namespace="usuario", value="experienciaUsuarioPorId")
+    private static String sqlExperienciaUsuarioPorId;
+
     public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -54,7 +57,7 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("nombre", nombre);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
+        return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste, paramSource, Boolean.class));
     }
 
     @Override
@@ -67,11 +70,11 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+        return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class));
     }
 
     @Override
-    public Long idPorUsuarioClave(String nombre, String clave) throws EmptyResultDataAccessException {
+    public Long idPorUsuarioClave(String nombre, String clave) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("nombre", nombre);
         paramSource.addValue("clave", clave);
@@ -83,5 +86,12 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
         }catch(IncorrectResultSizeDataAccessException aout){
             return -1L;
         }
+    }
+
+    @Override
+    public boolean experienciaPorIdUsuario(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id",id);
+        return Boolean.TRUE.equals(this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExperienciaUsuarioPorId, paramSource, Boolean.class));
     }
 }

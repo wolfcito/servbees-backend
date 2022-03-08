@@ -1,5 +1,6 @@
 package com.ceiba.categoria.utils;
 
+import com.ceiba.generadores.Generadores;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

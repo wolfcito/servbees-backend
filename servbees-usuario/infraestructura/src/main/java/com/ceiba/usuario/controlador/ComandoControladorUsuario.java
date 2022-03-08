@@ -1,12 +1,10 @@
 package com.ceiba.usuario.controlador;
 
 import com.ceiba.ComandoRespuesta;
+import com.ceiba.usuario.comando.ComandoExperiencia;
 import com.ceiba.usuario.comando.ComandoIngreso;
 import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorActualizarUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorCrearUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorEliminarUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorIngresarUsuario;
+import com.ceiba.usuario.comando.manejador.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,16 +20,19 @@ public class ComandoControladorUsuario {
 	private final ManejadorEliminarUsuario manejadorEliminarUsuario;
 	private final ManejadorActualizarUsuario manejadorActualizarUsuario;
 	private final ManejadorIngresarUsuario manejadorIngresarUsuario;
+	private final ManejadorExperienciaUsuario manejadorExperienciaUsuario;
 
     @Autowired
     public ComandoControladorUsuario(ManejadorCrearUsuario manejadorCrearUsuario,
 									 ManejadorEliminarUsuario manejadorEliminarUsuario,
 									 ManejadorActualizarUsuario manejadorActualizarUsuario,
-									 ManejadorIngresarUsuario manejadorIngresarUsuario) {
+									 ManejadorIngresarUsuario manejadorIngresarUsuario,
+									 ManejadorExperienciaUsuario manejadorExperienciaUsuario) {
         this.manejadorCrearUsuario = manejadorCrearUsuario;
 		this.manejadorEliminarUsuario = manejadorEliminarUsuario;
 		this.manejadorActualizarUsuario = manejadorActualizarUsuario;
 		this.manejadorIngresarUsuario = manejadorIngresarUsuario;
+		this.manejadorExperienciaUsuario = manejadorExperienciaUsuario;
     }
 
     @PostMapping
@@ -57,6 +58,14 @@ public class ComandoControladorUsuario {
 	@ApiOperation("Obtener id Usuario")
 	public ComandoRespuesta<Long> ingresar(@RequestBody ComandoIngreso comandoIngreso) {
 		return manejadorIngresarUsuario.ejecutar(comandoIngreso);
+	}
+
+	@GetMapping(value = "/{id}/experiencia")
+	@ApiOperation("Obtener experiencia usuario")
+	public ComandoRespuesta<Boolean> experiencia(@PathVariable Long id) {
+		ComandoExperiencia comandoExperiencia = new ComandoExperiencia();
+		comandoExperiencia.setId(id);
+		return manejadorExperienciaUsuario.ejecutar(comandoExperiencia);
 	}
 
 }

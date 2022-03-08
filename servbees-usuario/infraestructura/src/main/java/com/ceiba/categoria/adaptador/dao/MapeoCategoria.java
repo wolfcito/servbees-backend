@@ -12,14 +12,14 @@ public class MapeoCategoria implements RowMapper<DtoCategoria>, MapperResult {
     @Override
     public DtoCategoria mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-        Long id = resultSet.getLong("id");
+//        Long id = resultSet.getLong("id");
         String nombre = resultSet.getString("nombre");
         String codigo = resultSet.getString("codigo");
         Double costoHora = resultSet.getDouble("costo_hora");
         Double costoDia = resultSet.getDouble("costo_dia");
         Double costoSemana = resultSet.getDouble("costo_semana");
 
-        return new DtoCategoria(id,nombre,codigo, costoHora, costoDia, costoSemana);
+        return new DtoCategoria(nombre,codigo, costoHora, costoDia, costoSemana);
     }
 
 }

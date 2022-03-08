@@ -1,4 +1,4 @@
-package com.ceiba.categoria.utils;
+package com.ceiba.generadores;
 
 import java.util.Random;
 

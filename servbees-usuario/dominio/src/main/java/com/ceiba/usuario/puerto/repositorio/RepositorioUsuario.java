@@ -41,4 +41,9 @@ public interface RepositorioUsuario {
      */
     Long idPorUsuarioClave(String nombre, String clave);
 
+    /**
+     * Permite validar la experiencia de un usuario
+     * @return true si cumple con el criterio
+     */
+    boolean experienciaPorIdUsuario(Long id);
 }

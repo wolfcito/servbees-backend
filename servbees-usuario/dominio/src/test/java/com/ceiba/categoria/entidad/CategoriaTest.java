@@ -3,16 +3,16 @@ package com.ceiba.categoria.entidad;
 import com.ceiba.BasePrueba;
 import com.ceiba.categoria.modelo.entidad.Categoria;
 import com.ceiba.categoria.servicio.testdatabuilder.CategoriaTestDataBuilder;
-import com.ceiba.categoria.utils.Generadores;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.generadores.Generadores;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public final class CategoriaTest {
+final class CategoriaTest {
 
     @Test
     @DisplayName("Deberia crear correctamente una categoria")
