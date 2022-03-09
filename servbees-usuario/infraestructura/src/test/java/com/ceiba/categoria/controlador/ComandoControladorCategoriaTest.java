@@ -46,21 +46,21 @@ class ComandoControladorCategoriaTest {
 
 
 
-    @Test
-    @DisplayName("Deberia eliminar una categoria")
-    void deberiaEliminarUnaCategoria() throws Exception {
-        // arrange
-        Long id = 1L;
-        // act - assert
-        mocMvc.perform(delete("/categorias/{id}",id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-        mocMvc.perform(get("/categorias")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
-    }
+//    @Test
+//    @DisplayName("Deberia eliminar una categoria")
+//    void deberiaEliminarUnaCategoria() throws Exception {
+//        // arrange
+//        Long id = 1L;
+//        // act - assert
+//        mocMvc.perform(delete("/categorias/{id}",id)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk());
+//
+//        mocMvc.perform(get("/categorias")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", hasSize(0)));
+//    }
 
 }

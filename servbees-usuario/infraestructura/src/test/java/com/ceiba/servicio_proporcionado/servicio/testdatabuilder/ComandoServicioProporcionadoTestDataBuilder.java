@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 public class ComandoServicioProporcionadoTestDataBuilder {
 
+    private Long id;
     private Long idCategoria;
     private Long idUsuarioPro;
     private Long idUsuarioCli;
@@ -20,14 +21,15 @@ public class ComandoServicioProporcionadoTestDataBuilder {
 
     public ComandoServicioProporcionadoTestDataBuilder() {
 
+        id = 1L;
         idCategoria = 1L;
         idUsuarioPro = 1L;
-        idUsuarioCli = 2L;
-        modalidad = "sa";
+        idUsuarioCli = 1L;
+        modalidad = "PH";
         cantidad = 1;
         costo = 10.0;
-        nivelSatisfacion = "nor";
-        estado = "s";
+        nivelSatisfacion = "SUP";
+        estado = "D";
         fecha = LocalDateTime.now();
     }
 
@@ -73,10 +75,10 @@ public class ComandoServicioProporcionadoTestDataBuilder {
     }
 
     public ComandoCalificar buildComandoCalificar() {
-        return new ComandoCalificar(nivelSatisfacion, estado);
+        return new ComandoCalificar(id,nivelSatisfacion, estado);
     }
 
     public ComandoReservar buildComandoReservar() {
-        return new ComandoReservar(idUsuarioCli, modalidad, cantidad, costo, estado);
+        return new ComandoReservar(id,idUsuarioCli, modalidad, cantidad, costo, estado);
     }
 }

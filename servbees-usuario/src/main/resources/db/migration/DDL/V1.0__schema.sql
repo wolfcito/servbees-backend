@@ -41,13 +41,13 @@ CREATE TABLE servicio_proporcionado (
 -- CONSTRAINT fk_serv_proveedor_id FOREIGN KEY (id_usuario_pro) REFERENCES usuario(id)
 
 ---- DATA USUARIO
-insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(1,'test0','1234',now(),0);
+--insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(1,'test0','1234',now(),0);
 --insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(2,'test1','1234',now(),1);
 --insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(3,'test2','1234',now(),12);
 --insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(4,'test3','1234',now(),15);
 --
 ---- DATA CATEGORIA
-insert into categoria(id, nombre, codigo,costo_hora,costo_dia,costo_semana) values(1,'Modelado 3D','md3d',30,230,1100);
+--insert into categoria(id, nombre, codigo,costo_hora,costo_dia,costo_semana) values(1,'Modelado 3D','md3d',30,230,1100);
 --insert into categoria(id, nombre, codigo,costo_hora,costo_dia,costo_semana) values(2,'Marketing Digital','mdg',15,150,900);
 --insert into categoria(id, nombre, codigo,costo_hora,costo_dia,costo_semana) values(3,'Ilustración','ils',60,330,1500);
 --insert into categoria(id, nombre, codigo,costo_hora,costo_dia,costo_semana) values(4,'Social Media','sme',45,280,1300);
