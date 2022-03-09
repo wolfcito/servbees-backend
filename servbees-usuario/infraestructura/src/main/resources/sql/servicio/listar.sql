@@ -1,0 +1,1 @@
+select id, id_categoria, id_usuario_pro, id_usuario_cli, modalidad, cantidad, costo, nivel_satisfacion, estado, fecha from servicio_proporcionado
