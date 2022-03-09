@@ -7,7 +7,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class DtoCategoria {
 
-//    private Long id;
     private String nombre;
     private String codigo;
     private Double costoHora;
