@@ -37,28 +37,11 @@ public class RepositorioServicioProporcionadoMysql implements RepositorioServici
     public void reservar(ServicioProporcionado servicioProporcionado) {
 
         this.customNamedParameterJdbcTemplate.actualizar(servicioProporcionado, sqlReservar);
-//        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-//        paramSource.addValue("id", servicioProporcionado.getId());
-//        paramSource.addValue("idUsuarioCli", servicioProporcionado.getIdUsuarioCli());
-//        paramSource.addValue("modalidad", servicioProporcionado.getModalidad());
-//        paramSource.addValue("cantidad", servicioProporcionado.getCantidad());
-//        paramSource.addValue("costo", servicioProporcionado.getCosto());
-//        paramSource.addValue("estado", servicioProporcionado.getEstado());
-//        paramSource.addValue("fecha", servicioProporcionado.getFecha());
-//
-//        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlReservar, paramSource, Long.class);
     }
 
     @Override
     public void calificar(ServicioProporcionado servicioProporcionado) {
         this.customNamedParameterJdbcTemplate.actualizar(servicioProporcionado, sqlCalificar);
-//        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-//        paramSource.addValue("id", servicioProporcionado.getId());
-//        paramSource.addValue("nivelSatisfacion", servicioProporcionado.getNivelSatisfacion());
-//        paramSource.addValue("estado", servicioProporcionado.getEstado());
-//        paramSource.addValue("fecha", servicioProporcionado.getFecha());
-//
-//        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlCalificar, paramSource, Long.class);
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.ceiba.ComandoRespuesta;
 import com.ceiba.servicio_proporcionado.comando.ComandoCalificar;
 import com.ceiba.servicio_proporcionado.comando.ComandoRegistrar;
 import com.ceiba.servicio_proporcionado.comando.ComandoReservar;
-import com.ceiba.servicio_proporcionado.comando.manejador.ManejadorBuscarMejoresServicioProporcionado;
 import com.ceiba.servicio_proporcionado.comando.manejador.ManejadorCalificarServicioProporcionado;
 import com.ceiba.servicio_proporcionado.comando.manejador.ManejadorRegistrarServicioProporcionado;
 import com.ceiba.servicio_proporcionado.comando.manejador.ManejadorReservarServicioProporcionado;
@@ -21,18 +20,16 @@ public class ComandoControladorServicioProporcionado {
     private final ManejadorRegistrarServicioProporcionado manejadorRegistrarServicioProporcionado;
     private final ManejadorReservarServicioProporcionado manejadorReservarServicioProporcionado;
     private final ManejadorCalificarServicioProporcionado manejadorCalificarServicioProporcionado;
-    private final ManejadorBuscarMejoresServicioProporcionado manejadorBuscarMejoresServicioProporcionado;
 
 
     @Autowired
     public ComandoControladorServicioProporcionado(ManejadorRegistrarServicioProporcionado manejadorRegistrarServicioProporcionado,
                                                    ManejadorReservarServicioProporcionado manejadorReservarServicioProporcionado,
-                                                   ManejadorCalificarServicioProporcionado manejadorCalificarServicioProporcionado,
-                                                   ManejadorBuscarMejoresServicioProporcionado manejadorBuscarMejoresServicioProporcionado) {
+                                                   ManejadorCalificarServicioProporcionado manejadorCalificarServicioProporcionado
+                                                   ) {
         this.manejadorRegistrarServicioProporcionado = manejadorRegistrarServicioProporcionado;
         this.manejadorReservarServicioProporcionado = manejadorReservarServicioProporcionado;
         this.manejadorCalificarServicioProporcionado = manejadorCalificarServicioProporcionado;
-        this.manejadorBuscarMejoresServicioProporcionado = manejadorBuscarMejoresServicioProporcionado;
     }
 
     @PatchMapping(value = "/registrar")
@@ -56,10 +53,5 @@ public class ComandoControladorServicioProporcionado {
         return manejadorCalificarServicioProporcionado.ejecutar(comandoCalificar);
     }
 
-    @PatchMapping(value = "/buscar-mejores")
-    @ApiOperation("Registra un servicio del Proveedor")
-    public ComandoRespuesta<Long> buscarMejores(@RequestBody ComandoRegistrar comandoRegistrar) {
 
-        return manejadorBuscarMejoresServicioProporcionado.ejecutar(comandoRegistrar);
-    }
 }
