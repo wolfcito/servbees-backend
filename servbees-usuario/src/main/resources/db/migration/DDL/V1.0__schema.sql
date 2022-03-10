@@ -22,10 +22,10 @@ CREATE TABLE servicio_proporcionado (
  id_categoria int(11) not null,
  id_usuario_pro int(11) not null,
  id_usuario_cli int(11) null,
- modalidad varchar(2) null default('sa'), --CHECK(modalidad IN('ph', 'pd', 'ps','sa'))
+ modalidad varchar(2) null default('SA'), --CHECK(modalidad IN('ph', 'pd', 'ps','sa'))
  cantidad int null default(1),
  costo number(9,2) null,
- nivel_satisfacion varchar(3) null default('nor'), --CHECK(nivel_satisfacion IN('sup', 'inf', 'nor'))
+ nivel_satisfacion varchar(3) null default('NOR'), --CHECK(nivel_satisfacion IN('sup', 'inf', 'nor'))
  estado varchar(2) null default('D'), --CHECK(estado IN('d', 'r', 'c'))
  fecha datetime null default now(),
  PRIMARY KEY (id),
@@ -41,7 +41,7 @@ CREATE TABLE servicio_proporcionado (
 -- CONSTRAINT fk_serv_proveedor_id FOREIGN KEY (id_usuario_pro) REFERENCES usuario(id)
 
 ---- DATA USUARIO
---insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(1,'test0','1234',now(),0);
+--insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(1,'test0','1234',now(),12);
 --insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(2,'test1','1234',now(),1);
 --insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(3,'test2','1234',now(),12);
 --insert into usuario(id, nombre,clave,fecha_creacion,meses_experiencia) values(4,'test3','1234',now(),15);

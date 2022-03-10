@@ -15,6 +15,7 @@ import static com.ceiba.dominio.ValidadorArgumento.*;
 @Getter
 public class ServicioProporcionado {
 
+    private static final String SE_DEBE_INGRESAR_VALOR_NUMERICO = "Se debe ingresar valor numerico";
     private static final String SE_DEBE_INGRESAR_ID_SERVICIO = "Se debe ingresar el ID Servicio";
     private static final String SE_DEBE_INGRESAR_ID_CATEGORIA = "Se debe ingresar el ID de Categoria";
     private static final String SE_DEBE_INGRESAR_ID_PROVEEDOR = "Se debe ingresar el ID de Proveedor";

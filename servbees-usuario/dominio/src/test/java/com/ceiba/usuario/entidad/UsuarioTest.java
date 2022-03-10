@@ -94,4 +94,18 @@ final class UsuarioTest {
                 ExcepcionValorInvalido.class, "Se debe ingresar un número mayor o igual que cero");
     }
 
+    @Test
+    @DisplayName("Deberia fallar experiencia nulo")
+    void deberiaFallarExperienciaNulo() {
+
+        //Arrange
+        UsuarioTestDataBuilder categoriaTestDataBuilder = new UsuarioTestDataBuilder()
+                .conExperiencia(null).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    categoriaTestDataBuilder.build();
+                },
+                ExcepcionValorObligatorio.class, "Se debe ingresar los meses de experiencia");
+    }
+
 }

@@ -53,7 +53,6 @@ final class ServicioIngresarUsuarioTest {
         // arrange
         Usuario usuario = new UsuarioTestDataBuilder().build();
         RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
-//        Mockito.when(repositorioUsuario.existe(Mockito.anyString())).thenReturn(false);
         Mockito.when(repositorioUsuario.idPorUsuarioClave(usuario.getNombre(), usuario.getClave())).thenReturn(2L);
         ServicioIngresarUsuario servicioIngresarUsuario = new ServicioIngresarUsuario(repositorioUsuario);
         // act

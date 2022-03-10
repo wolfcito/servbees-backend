@@ -57,22 +57,22 @@ final class ComandoControladorUsuarioTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    @DisplayName("Deberia eliminar un usuario")
-//    void deberiaEliminarUnUsuario() throws Exception {
-//        // arrange
-//        Long id = 1L;
-//        // act - assert
-//        mocMvc.perform(delete("/usuarios/{id}",id)
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk());
-//
-//        mocMvc.perform(get("/usuarios")
-//                .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", hasSize(0)));
-//    }
+    @Test
+    @DisplayName("Deberia eliminar un usuario")
+    void deberiaEliminarUnUsuario() throws Exception {
+        // arrange
+        Long id = 1L;
+        // act - assert
+        mocMvc.perform(delete("/usuarios/{id}",id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        mocMvc.perform(get("/usuarios")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
+    }
 
     @Test
     @DisplayName("Deberia validar clave del usuario y devolver id")
@@ -98,6 +98,6 @@ final class ComandoControladorUsuarioTest {
         mocMvc.perform(get("/usuarios/{id}/experiencia",id)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': false}"));
+                .andExpect(content().json("{'valor': true}"));
     }
 }

@@ -33,6 +33,11 @@ public class ComandoServicioProporcionadoTestDataBuilder {
         fecha = LocalDateTime.now();
     }
 
+    public ComandoServicioProporcionadoTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public ComandoServicioProporcionadoTestDataBuilder conIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
         return this;
