@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public final class UsuarioTest {
+final class UsuarioTest {
 
     @Test
     @DisplayName("Deberia crear correctamente el usuario")

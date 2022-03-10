@@ -23,7 +23,7 @@ final class ServicioExperienciaUsuarioTest {
     }
 
     @Test
-    @DisplayName("Deberia lanzar una exepcion cuando se valide la inexistencia del Usuario")
+    @DisplayName("Deberia consulta que NO cumple Experiencia del Usuario llamando al repositorio")
     void eberiaConsultarNoCumpleExperienciaUsuarioLlamandoAlRepositorio() {
         RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
         Mockito.when(repositorioUsuario.experienciaPorIdUsuario(Mockito.anyLong())).thenReturn(false);
