@@ -25,30 +25,30 @@ public class ComandoControladorServicioProporcionado {
     @Autowired
     public ComandoControladorServicioProporcionado(ManejadorRegistrarServicioProporcionado manejadorRegistrarServicioProporcionado,
                                                    ManejadorReservarServicioProporcionado manejadorReservarServicioProporcionado,
-                                                   ManejadorCalificarServicioProporcionado manejadorCalificarServicioProporcionado
-                                                   ) {
+                                                   ManejadorCalificarServicioProporcionado manejadorCalificarServicioProporcionado) {
         this.manejadorRegistrarServicioProporcionado = manejadorRegistrarServicioProporcionado;
         this.manejadorReservarServicioProporcionado = manejadorReservarServicioProporcionado;
         this.manejadorCalificarServicioProporcionado = manejadorCalificarServicioProporcionado;
+
     }
 
-    @PatchMapping(value = "/registrar")
+    @PostMapping(value = "/registrar")
     @ApiOperation("Registra un servicio del Proveedor")
     public ComandoRespuesta<Long> registrar(@RequestBody ComandoRegistrar comandoRegistrar) {
 
         return manejadorRegistrarServicioProporcionado.ejecutar(comandoRegistrar);
     }
 
-    @PatchMapping(value = "/{id}/reservar")
+    @PostMapping(value = "/{id}/reservar")
     @ApiOperation("Reserva un servicio del Proveedor")
     public ComandoRespuesta<Long> reservar(@PathVariable Long id, @RequestBody ComandoReservar comandoReservar) {
         comandoReservar.setId(id);
         return manejadorReservarServicioProporcionado.ejecutar(comandoReservar);
     }
 
-    @PatchMapping(value = "/{id}/calificar")
+    @PostMapping(value = "/{id}/calificar")
     @ApiOperation("Califica un servicio del Proveedor")
-    public ComandoRespuesta<Long> calificar(@PathVariable Long id,@RequestBody ComandoCalificar comandoCalificar) {
+    public ComandoRespuesta<Long> calificar(@PathVariable Long id, @RequestBody ComandoCalificar comandoCalificar) {
         comandoCalificar.setId(id);
         return manejadorCalificarServicioProporcionado.ejecutar(comandoCalificar);
     }

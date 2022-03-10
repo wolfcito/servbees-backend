@@ -5,13 +5,15 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class DtoServicioProporcionado {
+public class DtoServiciosDisponibles {
 
+    private Long idReserva;
+    private Long idUsuarioProveedor;
     private String nombreUsuario;
-    private Integer experiencia;
+    private Double costoHora;
+    private Double costoDia;
+    private Double costoSemana;
     private String nombreCategoria;
     private Long idCategoria;
-    private String nivelSatisfacion;
-    private String modalidad;
 
 }

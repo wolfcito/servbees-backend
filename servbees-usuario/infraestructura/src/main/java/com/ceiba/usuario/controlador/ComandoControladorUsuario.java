@@ -13,26 +13,26 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/usuarios")
-@Api(tags = { "Controlador comando usuario"})
+@Api(tags = {"Controlador comando usuario"})
 public class ComandoControladorUsuario {
 
     private final ManejadorCrearUsuario manejadorCrearUsuario;
-	private final ManejadorEliminarUsuario manejadorEliminarUsuario;
-	private final ManejadorActualizarUsuario manejadorActualizarUsuario;
-	private final ManejadorIngresarUsuario manejadorIngresarUsuario;
-	private final ManejadorExperienciaUsuario manejadorExperienciaUsuario;
+    private final ManejadorEliminarUsuario manejadorEliminarUsuario;
+    private final ManejadorActualizarUsuario manejadorActualizarUsuario;
+    private final ManejadorIngresarUsuario manejadorIngresarUsuario;
+    private final ManejadorExperienciaUsuario manejadorExperienciaUsuario;
 
     @Autowired
     public ComandoControladorUsuario(ManejadorCrearUsuario manejadorCrearUsuario,
-									 ManejadorEliminarUsuario manejadorEliminarUsuario,
-									 ManejadorActualizarUsuario manejadorActualizarUsuario,
-									 ManejadorIngresarUsuario manejadorIngresarUsuario,
-									 ManejadorExperienciaUsuario manejadorExperienciaUsuario) {
+                                     ManejadorEliminarUsuario manejadorEliminarUsuario,
+                                     ManejadorActualizarUsuario manejadorActualizarUsuario,
+                                     ManejadorIngresarUsuario manejadorIngresarUsuario,
+                                     ManejadorExperienciaUsuario manejadorExperienciaUsuario) {
         this.manejadorCrearUsuario = manejadorCrearUsuario;
-		this.manejadorEliminarUsuario = manejadorEliminarUsuario;
-		this.manejadorActualizarUsuario = manejadorActualizarUsuario;
-		this.manejadorIngresarUsuario = manejadorIngresarUsuario;
-		this.manejadorExperienciaUsuario = manejadorExperienciaUsuario;
+        this.manejadorEliminarUsuario = manejadorEliminarUsuario;
+        this.manejadorActualizarUsuario = manejadorActualizarUsuario;
+        this.manejadorIngresarUsuario = manejadorIngresarUsuario;
+        this.manejadorExperienciaUsuario = manejadorExperienciaUsuario;
     }
 
     @PostMapping
@@ -41,31 +41,31 @@ public class ComandoControladorUsuario {
         return manejadorCrearUsuario.ejecutar(comandoUsuario);
     }
 
-    @DeleteMapping(value="/{id}")
-	@ApiOperation("Eliminar Usuario")
-	public void eliminar(@PathVariable Long id) {
-		manejadorEliminarUsuario.ejecutar(id);
-	}
+    @DeleteMapping(value = "/{id}")
+    @ApiOperation("Eliminar Usuario")
+    public void eliminar(@PathVariable Long id) {
+        manejadorEliminarUsuario.ejecutar(id);
+    }
 
-	@PutMapping(value="/{id}")
-	@ApiOperation("Actualizar Usuario")
-	public void actualizar(@RequestBody ComandoUsuario comandoUsuario,@PathVariable Long id) {
-		comandoUsuario.setId(id);
-		manejadorActualizarUsuario.ejecutar(comandoUsuario);
-	}
+    @PutMapping(value = "/{id}")
+    @ApiOperation("Actualizar Usuario")
+    public void actualizar(@RequestBody ComandoUsuario comandoUsuario, @PathVariable Long id) {
+        comandoUsuario.setId(id);
+        manejadorActualizarUsuario.ejecutar(comandoUsuario);
+    }
 
-	@PostMapping(value = "/login")
-	@ApiOperation("Obtener id Usuario")
-	public ComandoRespuesta<Long> ingresar(@RequestBody ComandoIngreso comandoIngreso) {
-		return manejadorIngresarUsuario.ejecutar(comandoIngreso);
-	}
+    @PostMapping(value = "/login")
+    @ApiOperation("Obtener id Usuario")
+    public ComandoRespuesta<Long> ingresar(@RequestBody ComandoIngreso comandoIngreso) {
+        return manejadorIngresarUsuario.ejecutar(comandoIngreso);
+    }
 
-	@GetMapping(value = "/{id}/experiencia")
-	@ApiOperation("Obtener experiencia usuario")
-	public ComandoRespuesta<Boolean> experiencia(@PathVariable Long id) {
-		ComandoExperiencia comandoExperiencia = new ComandoExperiencia();
-		comandoExperiencia.setId(id);
-		return manejadorExperienciaUsuario.ejecutar(comandoExperiencia);
-	}
+    @GetMapping(value = "/{id}/experiencia")
+    @ApiOperation("Obtener experiencia usuario")
+    public ComandoRespuesta<Boolean> experiencia(@PathVariable Long id) {
+        ComandoExperiencia comandoExperiencia = new ComandoExperiencia();
+        comandoExperiencia.setId(id);
+        return manejadorExperienciaUsuario.ejecutar(comandoExperiencia);
+    }
 
 }

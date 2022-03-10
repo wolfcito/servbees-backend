@@ -15,10 +15,11 @@ public class MapeoServicioProporcionado implements RowMapper<DtoServicioProporci
         String nombreUsuario = resultSet.getString(1);
         Integer experiencia = resultSet.getInt(2);
         String nombreCategoria = resultSet.getString(3);
-        String nivelSatisfacion = resultSet.getString(4);
-        String modalidad = resultSet.getString(5);
+        Long idCategoria = resultSet.getLong(4);
+        String nivelSatisfacion = resultSet.getString(5);
+        String modalidad = resultSet.getString(6);
 
-        return new DtoServicioProporcionado(nombreUsuario,experiencia,nombreCategoria, nivelSatisfacion, modalidad);
+        return new DtoServicioProporcionado(nombreUsuario,experiencia,nombreCategoria,idCategoria, nivelSatisfacion, modalidad);
     }
 
 }
