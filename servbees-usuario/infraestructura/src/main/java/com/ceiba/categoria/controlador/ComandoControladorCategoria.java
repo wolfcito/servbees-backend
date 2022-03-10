@@ -26,5 +26,5 @@ public class ComandoControladorCategoria {
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCategoria comandoCategoria) {
         return manejadorCrearCategoria.ejecutar(comandoCategoria);
     }
-    
+
 }
