@@ -29,9 +29,9 @@ public class ServicioProporcionado {
     private static final String SE_DEBE_INGRESAR_CANTIDAD = "Se debe ingresar la cantidad";
     private static final String SE_DEBE_INGRESAR_ESTADO = "Se debe ingresar el estado";
 
-    private static final String MODALIDAD = "MODALIDAD";
+    private static final String VALOR_MODALIDAD = "MODALIDAD";
     private static final String NIVEL_SATISFACCION = "NIVEL SATISFACCION";
-    private static final String ESTADO = "ESTADO";
+    private static final String VALOR_ESTADO = "ESTADO";
 
     private static final int LONGITUD_MAX_MODALIDAD = 2;
     private static final int LONGITUD_MAX_NIVEL_SATISFACCION = 3;
@@ -75,8 +75,8 @@ public class ServicioProporcionado {
         validarPositivo(Double.valueOf(idUsuarioCli), SE_DEBE_INGRESAR_VALOR_MAYOR_O_IGUAL_QUE_CERO);
         validarPositivo(Double.valueOf(cantidad), SE_DEBE_INGRESAR_VALOR_MAYOR_O_IGUAL_QUE_CERO);
         validarPositivo(costo, SE_DEBE_INGRESAR_VALOR_MAYOR_O_IGUAL_QUE_CERO);
-        validarLongitudMaxima(modalidad, LONGITUD_MAX_MODALIDAD, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, MODALIDAD, LONGITUD_MAX_MODALIDAD));
-        validarLongitudMaxima(estado, LONGITUD_MAX_ESTADO, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, ESTADO, LONGITUD_MAX_ESTADO));
+        validarLongitudMaxima(modalidad, LONGITUD_MAX_MODALIDAD, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, VALOR_MODALIDAD, LONGITUD_MAX_MODALIDAD));
+        validarLongitudMaxima(estado, LONGITUD_MAX_ESTADO, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, VALOR_ESTADO, LONGITUD_MAX_ESTADO));
 
         validarValido(modalidad,Modalidades.class,String.format(SE_DEBE_INGRESAR_VALOR_LISTA, Arrays.asList(Modalidades.values())));
         validarValido(estado, Estados.class,String.format(SE_DEBE_INGRESAR_VALOR_LISTA, Arrays.asList(Estados.values())));
@@ -95,7 +95,7 @@ public class ServicioProporcionado {
         validarObligatorio(id, SE_DEBE_INGRESAR_ID_SERVICIO);
         validarPositivo(Double.valueOf(id), SE_DEBE_INGRESAR_VALOR_MAYOR_O_IGUAL_QUE_CERO);
         validarLongitudMaxima(nivelSatisfacion, LONGITUD_MAX_NIVEL_SATISFACCION, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, NIVEL_SATISFACCION, LONGITUD_MAX_NIVEL_SATISFACCION));
-        validarLongitudMaxima(estado, LONGITUD_MAX_ESTADO, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, ESTADO, LONGITUD_MAX_ESTADO));
+        validarLongitudMaxima(estado, LONGITUD_MAX_ESTADO, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, VALOR_ESTADO, LONGITUD_MAX_ESTADO));
         validarValido(nivelSatisfacion, NivelesSatisfacion.class,String.format(SE_DEBE_INGRESAR_VALOR_LISTA, Arrays.asList(NivelesSatisfacion.values())));
         validarValido(estado,Estados.class,String.format(SE_DEBE_INGRESAR_VALOR_LISTA, Arrays.asList(Estados.values())));
 

@@ -13,8 +13,8 @@ public class Categoria {
     private static final String SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO = "Se debe ingresar un número mayor que cero";
     private static final String EL_VALOR_NO_DEBE_SER_MENOR_QUE = "El valor del %s no debe ser menor que el valor del %s";
 
-    private static final String NOMBRE = "NOMBRE";
-    private static final String CODIGO = "CODIGO";
+    private static final String VALOR_NOMBRE = "NOMBRE";
+    private static final String VALOR_CODIGO = "CODIGO";
     private static final String COSTO_POR_HORA = "COSTO POR HORA";
     private static final String COSTO_POR_DIA = "COSTO POR DIA";
     private static final String COSTO_POR_SEMANA = "COSTO POR SEMANA";
@@ -32,9 +32,9 @@ public class Categoria {
 
     public Categoria(Long id, String nombre, String codigo, Double costoHora, Double costoDia,Double costoSemana) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_CATEGORIA);
-        validarLongitudMaxima(nombre, LONGITUD_MAX_NOMBRE, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, NOMBRE, LONGITUD_MAX_NOMBRE));
+        validarLongitudMaxima(nombre, LONGITUD_MAX_NOMBRE, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, VALOR_NOMBRE, LONGITUD_MAX_NOMBRE));
         validarObligatorio(codigo, SE_DEBE_INGRESAR_EL_CODIGO);
-        validarLongitudMaxima(codigo, LONGITUD_MAX_CODIGO, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, CODIGO, LONGITUD_MAX_CODIGO));
+        validarLongitudMaxima(codigo, LONGITUD_MAX_CODIGO, String.format(LONGITUD_MAXIMA_EXCEDIDA_PARA, VALOR_CODIGO, LONGITUD_MAX_CODIGO));
         validarPositivo(costoHora, SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO);
         validarPositivo(costoDia, SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO);
         validarPositivo(costoSemana, SE_DEBE_INGRESAR_VALOR_MAYOR_QUE_CERO);
