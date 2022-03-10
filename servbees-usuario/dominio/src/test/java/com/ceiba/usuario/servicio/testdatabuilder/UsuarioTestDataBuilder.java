@@ -47,4 +47,7 @@ public class UsuarioTestDataBuilder {
     public Usuario build() {
         return new Usuario(id,nombreUsuario, clave,fecha, mesesExperiencia);
     }
+    public Usuario buildLogin() {
+        return new Usuario(nombreUsuario,clave);
+    }
 }
