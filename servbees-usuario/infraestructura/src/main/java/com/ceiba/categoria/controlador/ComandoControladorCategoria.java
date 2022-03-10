@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class ComandoControladorCategoria {
 
     private final ManejadorCrearCategoria manejadorCrearCategoria;
-	private final ManejadorEliminarCategoria manejadorEliminarCategoria;
 
     @Autowired
-    public ComandoControladorCategoria(ManejadorCrearCategoria manejadorCrearCategoria,
-                                       ManejadorEliminarCategoria manejadorEliminarCategoria) {
+    public ComandoControladorCategoria(ManejadorCrearCategoria manejadorCrearCategoria
+    ) {
         this.manejadorCrearCategoria = manejadorCrearCategoria;
-		this.manejadorEliminarCategoria = manejadorEliminarCategoria;
     }
 
     @PostMapping
@@ -28,12 +26,5 @@ public class ComandoControladorCategoria {
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCategoria comandoCategoria) {
         return manejadorCrearCategoria.ejecutar(comandoCategoria);
     }
-
-    @DeleteMapping(value="/{id}")
-	@ApiOperation("Eliminar una categoria")
-	public void eliminar(@PathVariable Long id) {
-		manejadorEliminarCategoria.ejecutar(id);
-	}
-
-
+    
 }

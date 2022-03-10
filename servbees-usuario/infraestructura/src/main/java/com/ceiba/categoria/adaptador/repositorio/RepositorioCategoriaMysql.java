@@ -15,9 +15,6 @@ public class RepositorioCategoriaMysql implements RepositorioCategoria {
     @SqlStatement(namespace="categoria", value="crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="categoria", value="eliminar")
-    private static String sqlEliminar;
-
     @SqlStatement(namespace="categoria", value="existe")
     private static String sqlExiste;
 
@@ -28,14 +25,6 @@ public class RepositorioCategoriaMysql implements RepositorioCategoria {
     @Override
     public Long crear(Categoria categoria) {
         return this.customNamedParameterJdbcTemplate.crear(categoria, sqlCrear);
-    }
-
-    @Override
-    public void eliminar(Long id) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
-
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 
     @Override

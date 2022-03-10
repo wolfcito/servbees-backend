@@ -11,12 +11,6 @@ public interface RepositorioCategoria {
     Long crear(Categoria categoria);
 
     /**
-     * Permite eliminar un categoria
-     * @param id
-     */
-    void eliminar(Long id);
-
-    /**
      * Permite validar si existe una categoria con un codigo especifico
      * @param codigo
      * @return si existe o no
