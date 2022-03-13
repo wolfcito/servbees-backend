@@ -53,6 +53,9 @@ CREATE TABLE servicio_proporcionado (
 --insert into categoria(id, nombre, codigo,costo_hora,costo_dia,costo_semana) values(4,'Social Media','sme',45,280,1300);
 
 -- DATA SERVICIO
---insert into servicio_proporcionado(id, id_categoria, id_usuario_cli, id_usuario_pro, nivel_satisfacion, modalidad, estado, costo, fecha) values(1, 1, 2, 1, 'sup', 'ph', 1, 100, now());
---insert into servicio_proporcionado(id, id_categoria, id_usuario_cli, id_usuario_pro, nivel_satisfacion, modalidad, estado, costo, fecha) values(2, 1, null, 1, 'sup', 'ph', 0, 100, now());
---insert into servicio_proporcionado(id, id_categoria, id_usuario_cli, id_usuario_pro, nivel_satisfacion, modalidad, estado, costo, fecha) values(3, 1, 2, 1, 'sup', 'ph', 1, 100, now());
+--insert into servicio_proporcionado(id, id_categoria, id_usuario_cli, id_usuario_pro, nivel_satisfacion, modalidad, estado, costo, fecha) values(1, 1, 2, 1, 'sup', 'ph', 'D', 100, now());
+--insert into servicio_proporcionado(id, id_categoria, id_usuario_cli, id_usuario_pro, nivel_satisfacion, modalidad, estado, costo, fecha) values(2, 1, null, 1, 'sup', 'ph', 'D', 100, now());
+--insert into servicio_proporcionado(id, id_categoria, id_usuario_cli, id_usuario_pro, nivel_satisfacion, modalidad, estado, costo, fecha) values(3, 1, 2, 1, 'sup', 'ph', 'D' , 100, now());
+--insert into servicio_proporcionado(id,id_categoria, id_usuario_pro, id_usuario_cli, modalidad, cantidad, costo, nivel_satisfacion, estado) values(4, 1, 1,1, 'PH', 1, 100, 'SUP','C' );
+--insert into servicio_proporcionado(id,id_categoria, id_usuario_pro, id_usuario_cli, modalidad, cantidad, costo, nivel_satisfacion, estado) values(5, 1, 1,1, 'PH', 1, 100, 'NOR','R' );
+--insert into servicio_proporcionado(id,id_categoria, id_usuario_pro, id_usuario_cli,modalidad, cantidad, nivel_satisfacion, estado) values(6, 1, 1, 1,'SA', 1, 'NOR','D' );

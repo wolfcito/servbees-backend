@@ -3,12 +3,28 @@ package com.ceiba.usuario.entidad;
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 final class UsuarioLoginTest {
 
+
+    @Test
+    @DisplayName("Deberia crear correctamente el usuario")
+    void deberiaCrearCorrectamenteElUsusuario() {
+        // arrange
+        //act
+        Usuario usuario = new UsuarioTestDataBuilder().buildLogin();
+        //assert
+        assertEquals("test", usuario.getNombre());
+        assertEquals("1234", usuario.getClave());
+    }
 
     @Test
     @DisplayName("Deberia fallar si nombre del usuario login nulo")
